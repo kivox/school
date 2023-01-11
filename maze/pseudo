@@ -1,0 +1,62 @@
+gShields = 3
+
+FUNC welcomeMessage():
+    PRINT("You are lost in a maze...")
+    PRINT("I'm afraid there are monsters that are quite keen on eating you")
+
+FUNC takeTurn():
+    PRINT("You have come to a junction. Turn left (L) or right (R)?")
+    ignore = input()
+    random = randint(1, 10)
+    
+    IF random = 1:
+        PRINT("You have found the exit!")
+        RETURN True
+    ELIF random = 2:
+        PRINT("You found a shield")
+        getShield(1)
+        RETURN False
+    ELIF random = 3:
+        getShield(2)
+        RETURN False
+    ELIF random = 4:
+        PRINT("You found a monster")
+        loseShield()
+        RETURN False
+    ELIF random = 5:
+        PRINT("You found two monsters")
+        loseShield()
+        loseShield()
+        RETURN False
+    ELIF random = 6:
+        PRINT("You found a monster")
+        loseShield()
+        RETURN False
+    ELIF random = 7:
+        PRINT("You found two monsters")
+        loseShield()
+        RETURN False
+    ELIF random = 8:
+        PRINT("You found a monster")
+        loseShield()
+        RETURN False
+
+FUNC getShield(number):
+    gShields = gShields + number
+
+FUNC loseShield():
+    gShields = gShields - 1
+    IF gShields < 0:
+        PRINT("You have been overcome by hairy monsters!")
+        RETURN True
+    ELIF gShields = 0:
+        PRINT("Uh oh! You're out of shields too...")
+        RETURN True
+    ELSE:
+            PRINT("You have " + gShields + " shields left")
+
+FUNC main():
+    welcomeMessage()
+    LOOP takeTurn() UNTIL True:
+        PRINT("Bye bye")
+        
